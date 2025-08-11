@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyRecipeBook.Application.UseCases.User.Register;
 using MyRecipeBook.Communication.Requests;
 using MyRecipeBook.Communication.Response;
-
 
 namespace MyRevopeBook.API.Controllers;
 
@@ -10,9 +10,13 @@ namespace MyRevopeBook.API.Controllers;
 public class UserController : ControllerBase
 {
     [HttpPost]
-    [ProducesResponseType(typeof(ResponseRequestUserJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
     public IActionResult Register(RequestRegisterUserJson request)
     {
-        return Created();
+        var useCase = new RegisterUserUseCase();
+
+        var result = useCase.Execute(request);
+
+        return Created(string.Empty,result);
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace MyRecipeBook.Communication.Response;
 
-public class ResponseRequestUserJson
+public class ResponseRegisteredUserJson
 {
-    public string Name { get; set; } = string.Empty;//
+    public string Name { get; set; } = string.Empty;
 
 }
